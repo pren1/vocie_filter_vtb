@@ -142,7 +142,7 @@ if __name__ == '__main__':
     #     test_folders = all_folders[-20:]
 
 
-    input_path = '/Users/renpeng/Downloads/vtb-sound-dataset/'
+    input_path = '/Users/renpeng/Downloads/Normalized_data/'
     train_dict = folders_walk(input_path + 'train/')
     train_spk = [x for x in train_dict if len(x) >= 2]
 
@@ -183,3 +183,4 @@ if __name__ == '__main__':
         r = list(tqdm.tqdm(p.imap(test_wrapper, arr), total=len(arr)))
 
 # python3 generator.py -c ./config.yaml -d /Users/renpeng/Downloads/vtb-sound-dataset -o /Users/renpeng/Downloads/voicefilter_output -p 6
+
