@@ -184,3 +184,5 @@ if __name__ == '__main__':
 
 # python3 generator.py -c ./config.yaml -d /Users/renpeng/Downloads/vtb-sound-dataset -o /Users/renpeng/Downloads/voicefilter_output -p 6
 
+# python3 generator.py -c ./config.yaml -d /home/pren1/Normalized_data/ -o /home/pren1/voicefilter_output -p 6
+
