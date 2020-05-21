@@ -17,13 +17,13 @@ model = {
 }
 
 data = {
-  "train_dir": '/media/linux/409C52399C522A24/TrainingDataset/voice-filter/records/train',
-  "test_dir": '/media/linux/409C52399C522A24/TrainingDataset/voice-filter/records/test',
+  "train_dir": '/home/pren1/voicefilter_output/train',
+  "test_dir": '/home/pren1/voicefilter_output/test',
   'audio_len': 3.0
 }
 
 form = {
-  "input": '*.flac',
+  "input": '*.wav',
   "dvec": '*-dvec.txt', # will be calculated on-the-fly
   "target": {
     "wav": '*-target.wav',
@@ -36,13 +36,13 @@ form = {
 }
 
 train = {
-    "batch_size": 4,
+    "batch_size": 12,
     "num_workers": 8,
     "adam": 0.001,
-    "ckpt_interval": 100,
-    "summary_interval": 10,
+    "ckpt_interval": 1000,
+    "summary_interval": 100,
     "epoch": 10,
-    "train_step_pre_epoch": 200,
+    "train_step_pre_epoch": 6965,
     "eval_example": 10
 }
 

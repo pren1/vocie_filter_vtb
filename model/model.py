@@ -82,14 +82,14 @@ class VoiceFilter(nn.Module):
 
         x = torch.cat((x, dvec), dim=2) # [B, T, 8*num_freq + emb_dim]
 
-        x = self.dropout1(x)
+        # x = self.dropout1(x)
 
         x, _ = self.lstm(x) # [B, T, 2*lstm_dim]
         x = F.relu(x)
         x = self.fc1(x) # x: [B, T, fc1_dim]
         x = F.relu(x)
 		
-        x = self.dropout2(x)
+        # x = self.dropout2(x)
         x = self.fc2(x) # x: [B, T, fc2_dim], fc2_dim == num_freq
         x = torch.sigmoid(x)
         return x

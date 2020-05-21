@@ -3,7 +3,12 @@ from tensorboardX import SummaryWriter
 
 from .plotting import plot_spectrogram_to_numpy
 import config
-
+'1'
+import librosa
+import os
+def create_folders(directory):
+    if not os.path.exists(directory):
+        os.makedirs(directory)
 
 class MyWriter(SummaryWriter):
     def __init__(self, logdir):
@@ -23,6 +28,16 @@ class MyWriter(SummaryWriter):
         self.add_audio('mixed_wav/' + index, mixed_wav, step, config.audio['sample_rate'])
         self.add_audio('target_wav/' + index, target_wav, step, config.audio['sample_rate'])
         self.add_audio('estimated_wav/' + index, est_wav, step, config.audio['sample_rate'])
+
+        '2'
+        create_folders('mixed_wav/')
+        create_folders('target_wav/')
+        create_folders('estimated_wav/')
+
+        # print(index)
+        librosa.output.write_wav('mixed_wav/' + index + '.wav', mixed_wav, config.audio['sample_rate'])
+        librosa.output.write_wav('target_wav/' + index + '.wav', target_wav, config.audio['sample_rate'])
+        librosa.output.write_wav('estimated_wav/' + index + '.wav', est_wav, config.audio['sample_rate'])
 
         self.add_image('mixed_spectrogram/' + index,
             plot_spectrogram_to_numpy(mixed_spec), step, dataformats='HWC')

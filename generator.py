@@ -22,7 +22,6 @@ def vad_merge(w):
         temp.append(w[s:e])
     return np.concatenate(temp, axis=None)
 
-
 def mix(hp, args, audio, num, s1_dvec, s1_target, s2, train):
     srate = hp.audio.sample_rate
     dir_ = os.path.join(args.out_dir, 'train' if train else 'test')
@@ -184,5 +183,5 @@ if __name__ == '__main__':
 
 # python3 generator.py -c ./config.yaml -d /Users/renpeng/Downloads/vtb-sound-dataset -o /Users/renpeng/Downloads/voicefilter_output -p 6
 
-# python3 generator.py -c ./config.yaml -d /home/pren1/Normalized_data/ -o /home/pren1/voicefilter_output -p 6
+# python3 generator.py -c ./config.yaml -d /home/pren1/Normalized_data/ -o /home/pren1/voicefilter_output -p 16
 
