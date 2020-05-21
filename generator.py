@@ -111,7 +111,7 @@ if __name__ == '__main__':
                         help='apply vad to wav file. yes(1) or no(0, default)')
     args = parser.parse_args()
 
-    output_path = '/Users/renpeng/Downloads/voicefilter_output/'
+    output_path = '/home/pren1/voicefilter_output/'
     os.makedirs(output_path, exist_ok=True)
     os.makedirs(os.path.join(output_path, 'train'), exist_ok=True)
     os.makedirs(os.path.join(output_path, 'test'), exist_ok=True)
@@ -142,7 +142,7 @@ if __name__ == '__main__':
     #     test_folders = all_folders[-20:]
 
 
-    input_path = '/Users/renpeng/Downloads/Normalized_data/'
+    input_path = '/home/pren1/Normalized_data/'
     train_dict = folders_walk(input_path + 'train/')
     train_spk = [x for x in train_dict if len(x) >= 2]
 
