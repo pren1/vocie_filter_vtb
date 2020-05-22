@@ -40,8 +40,8 @@ train = {
     "num_workers": 8,
     "adam": 0.001,
     "ckpt_interval": 1000,
-    "summary_interval": 100,
-    "epoch": 10,
+    "summary_interval": 120,
+    "epoch": 100,
     "train_step_pre_epoch": 6965,
     "eval_example": 10
 }
