@@ -39,7 +39,7 @@ train = {
     "batch_size": 12,
     "num_workers": 8,
     "adam": 0.001,
-    "ckpt_interval": 1000,
+    "ckpt_interval": 600,
     "summary_interval": 120,
     "epoch": 100,
     "train_step_pre_epoch": 6965,
