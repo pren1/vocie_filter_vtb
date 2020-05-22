@@ -58,7 +58,6 @@ class VoiceFilter(nn.Module):
             config.model['lstm_dim'],
             batch_first=True,
             bidirectional=True)
-		
 
         self.fc1 = nn.Linear(2*config.model['lstm_dim'], config.model['fc1_dim'])
         self.dropout2 = nn.Dropout2d(0.5)

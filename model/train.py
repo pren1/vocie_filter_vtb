@@ -25,6 +25,10 @@ def train(embedder, model, optimizer, trainloader, writer, logger, epoch, pt_dir
             mask = model(mixed_mag, dvec)
             output = mixed_mag * mask
             #calculate loss, the paper says it use powerlaw, but we don't do it here
+
+            output = torch.pow(torch.clamp(output, min=0.0), 0.30)
+            target_mag = torch.pow(torch.clamp(target_mag, min=0.0), 0.30)
+
             loss = criterion(output, target_mag)
             loss.backward()
             optimizer.step()
