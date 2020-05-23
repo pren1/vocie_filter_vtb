@@ -110,6 +110,7 @@ if __name__ == '__main__':
                         help='apply vad to wav file. yes(1) or no(0, default)')
     args = parser.parse_args()
 
+    # output_path = '/Users/renpeng/Downloads/voicefilter_output/'
     output_path = '/home/pren1/voicefilter_output/'
     os.makedirs(output_path, exist_ok=True)
     os.makedirs(os.path.join(output_path, 'train'), exist_ok=True)
@@ -142,6 +143,7 @@ if __name__ == '__main__':
 
 
     input_path = '/home/pren1/Normalized_data/'
+    # input_path = '/Users/renpeng/Downloads/Normalized_data/'
     train_dict = folders_walk(input_path + 'train/')
     train_spk = [x for x in train_dict if len(x) >= 2]
 
@@ -160,20 +162,28 @@ if __name__ == '__main__':
     # test_spk = [x for x in test_spk if len(x) >= 2]
 
     audio = Audio()
+    spk1 = train_spk[0]
+    spk2 = train_spk[1]
+    print(f"spk1: {spk1}, spk2: {spk2}")
+    'always use the first as identification..'
+    s1_dvec = train_dict[spk1][0]
 
     def train_wrapper(num):
-        spk1, spk2 = random.sample(train_spk, 2)
-        s1_dvec, s1_target = random.sample(train_dict[spk1], 2)
+        # spk1, spk2 = random.sample(train_spk, 2)
+        _, s1_target = random.sample(train_dict[spk1], 2)
         s2 = random.choice(train_dict[spk2])
         mix(hp, args, audio, num, s1_dvec, s1_target, s2, train=True)
 
     def test_wrapper(num):
-        spk1, spk2 = random.sample(test_spk, 2)
-        s1_dvec, s1_target = random.sample(test_dict[spk1], 2)
+        # spk1, spk2 = random.sample(test_spk, 2)
+        'sample from test_dict'
+        _, s1_target = random.sample(test_dict[spk1], 2)
         s2 = random.choice(test_dict[spk2])
         mix(hp, args, audio, num, s1_dvec, s1_target, s2, train=False)
 
-    arr = list(range(10**5))
+    # train_wrapper(0)
+
+    arr = list(range(10**4))
     with Pool(cpu_num) as p:
         r = list(tqdm.tqdm(p.imap(train_wrapper, arr), total=len(arr)))
 
